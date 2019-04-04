@@ -82,3 +82,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+#macOS Files
+.DS_Store
