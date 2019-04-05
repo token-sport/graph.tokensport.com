@@ -22,10 +22,13 @@
   "homepage": "https://github.com/token-sport/graph.tokensport.com#readme",
   "dependencies": {
     "apollo-server-express": "^2.4.8",
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "graphql": "^14.2.1"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
     "nodemon": "^1.18.10"
   }
 }

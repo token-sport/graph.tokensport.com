@@ -1,25 +1,25 @@
 const {
-	gql,
-	makeExecutableSchema
+  gql,
+  makeExecutableSchema
 } = require('apollo-server-express');
 
-// RESOLVERS
+/* RESOLVERS */
 const resolvers = require('../resolvers');
 
-// TYPES
+/* TYPES */
 const Match = require('./types/Match');
 
 const rootQuery = gql`
-	# In this place are all GET endpoints
-	type Query {
-		matchs: [Match]
-	}
+  # In this place are all GET endpoints
+  type Query {
+    matchs: [Match]
+    error: Error
+  }
 `;
 
 const schema = makeExecutableSchema({
-	typeDefs: [ rootQuery, Match ],
-	resolvers
+  typeDefs: [ rootQuery, Match ],
+  resolvers
 });
 
 module.exports = schema;
-
