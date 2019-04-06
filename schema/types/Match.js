@@ -5,8 +5,4 @@ module.exports = `
     visitorTeam: String
     stadium: String
   }
-
-  type Error {
-    name: String
-  }
 `;

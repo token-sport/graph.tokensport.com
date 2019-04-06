@@ -12,8 +12,7 @@ const Match = require('./types/Match');
 const rootQuery = gql`
   # In this place are all GET endpoints
   type Query {
-    matchs: [Match]
-    error: Error
+    matchs: [Match],
   }
 `;
 

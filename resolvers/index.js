@@ -1,4 +1,5 @@
 const { NotFoundError } = require('../customErrors');
+const debug = require('debug')('graph.tokensport.com');
 
 const match = [
   {
@@ -20,6 +21,12 @@ Put Querys and Mutations handlers here */
 const resolvers = {
   Query: {
     matchs: () => match
+  },
+  Match: {
+    date: parent => parent.date,
+    localTeam: parent => parent.localTeam,
+    visitorTeam: parent => parent.visitorTeam,
+    stadium: parent => 'Estadio Default para todos.'
   }
 };
 

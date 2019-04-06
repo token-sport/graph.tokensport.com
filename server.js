@@ -27,5 +27,5 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.listen(PORT, () => {
-  console.log(`${chalk.white.bgMagenta('[graph.tokensport.com]')}: 🚀 Server ready at http://${IP}:${PORT}${server.graphqlPath}`);
+  console.log(`${chalk.white.bgBlue('[graph.tokensport.com]')}: 🚀 Server ready at http://${IP}:${PORT}${server.graphqlPath}`);
 });
