@@ -7,17 +7,17 @@ const {
 const resolvers = require('../resolvers');
 
 /* TYPES */
-const Match = require('./types/Match');
+const rootTypes = require('./def-types');
 
 const rootQuery = gql`
   # In this place are all GET endpoints
   type Query {
-    matchs: [Match],
+    matchs: String,
   }
 `;
 
 const schema = makeExecutableSchema({
-  typeDefs: [ rootQuery, Match ],
+  typeDefs: [ rootQuery, ...rootTypes ],
   resolvers
 });
 
