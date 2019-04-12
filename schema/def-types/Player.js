@@ -7,14 +7,19 @@ module.exports = gql`
     country: String!
     photo: String
     team: Team!
-    dorsal: Int
+    dorsal: Int!
     position: Position!
     reactions: [Reaction]
     editedBy: Staff
   }
 
-  type Position {
-    shortName: String!
-    longName: String!
+  input NewPlayer {
+    name: String!
+    country: String!
+    photo: String
+    team: ID!
+    dorsal: Int!
+    position: NewPosition!
+    editedBy: ID
   }
 `;

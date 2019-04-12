@@ -4,8 +4,8 @@
   "description": "Token Sport GraphQL and Prisma ORM module",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=graph.tokensport.com NODE_ENV=production server.js",
-    "start-dev": "DEBUG=graph.tokensport.com nodemon server.js"
+    "start": "DEBUG=graph.tokensport.com:* NODE_ENV=production server.js",
+    "start-dev": "DEBUG=graph.tokensport.com:* nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/token-sport/graph.tokensport.com#readme",
   "dependencies": {
     "apollo-server-express": "^2.4.8",
+    "bcrypt": "^3.0.5",
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "express": "^4.16.4",

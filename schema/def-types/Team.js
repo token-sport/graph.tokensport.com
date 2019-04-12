@@ -14,4 +14,16 @@ module.exports = gql`
     matchs: [Match!]!
     editedBy: Staff
   }
+
+  input NewTeam {
+    name: String!
+    photo: String!
+    lineup: String!
+    stadium: String!
+    country: String!
+    players: [ID]
+    dts: [ID]
+    tournaments: [ID]
+    editedBy: ID
+  }
 `;

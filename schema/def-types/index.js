@@ -10,6 +10,7 @@ const Reaction = require('./Reaction');
 const Country = require('./Country');
 const Tournament = require('./Tournament');
 const Team = require('./Team');
+const GLOBALS = require('./GLOBALS');
 const UNIONS = require('./UNIONS');
 const ENUMS = require('./ENUMS');
 
@@ -25,19 +26,7 @@ module.exports = [
   Country,
   Tournament,
   Team,
+  GLOBALS,
   UNIONS,
   ENUMS
 ];
-  // ${User}
-  // ${Staff}
-  // ${Player}
-  // ${Referee}
-  // ${Dt}
-  // ${Match}
-  // ${Event}
-  // ${Reaction}
-  // ${Country}
-  // ${Tournament}
-  // ${Team}
-  // ${UNIONS}
-  // ENUMS

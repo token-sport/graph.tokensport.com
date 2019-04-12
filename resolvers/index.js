@@ -1,26 +1,24 @@
 const { NotFoundError } = require('../customErrors');
 const debug = require('debug')('graph.tokensport.com');
 
-const match = [
-  {
-    date: '15/04/2019',
-    localTeam: 'Boca Juniors',
-    visitorTeam: 'River Plate',
-    stadium: 'Bombonera'
-  },
-  {
-    date: '25/04/2019',
-    localTeam: 'Colombia',
-    visitorTeam: 'Brasil',
-    stadium: 'Metropolitano de Barranquilla'
-  }
-];
-
 /* Main resolver Object:
 Put Querys and Mutations handlers here */
 const resolvers = {
   Query: {
     matchs: () => match
+  },
+  Mutation: {
+    createUser: (_, args, context) => context.controllers.user.createUser(args.user),
+    createReaction: (_, args, context) => context.controllers.user.createReaction(args.reaction),
+    createStaff: (_, args, context) => context.controllers.staff.createStaff(args.staff),
+    createCountry: (_, args, context) => context.controllers.staff.createCountry(args.country),
+    createTournament: (_, args, context) => context.controllers.staff.createTournament(args.tournament),
+    createTeam: (_, args, context) => context.controllers.staff.createTeam(args.team),
+    createMatch: (_, args, context) => context.controllers.staff.createMatch(args.match),
+    createPlayer: (_, args, context) => context.controllers.staff.createPlayer(args.player),
+    createDt: (_, args, context) => context.controllers.staff.createDt(args.dt),
+    createReferee: (_, args, context) => context.controllers.staff.createReferee(args.referee),
+    createEvent: (_, args, context) => context.controllers.staff.createEvent(args.event)
   }
 };
 

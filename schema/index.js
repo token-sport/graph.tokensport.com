@@ -10,9 +10,22 @@ const resolvers = require('../resolvers');
 const rootTypes = require('./def-types');
 
 const rootQuery = gql`
-  # In this place are all GET endpoints
   type Query {
     matchs: String,
+  }
+
+  type Mutation {
+    createUser(user: NewUser) : User
+    createReaction(reaction: NewReaction) : Reaction
+    createStaff(staff: NewStaff) : Staff
+    createCountry(country: NewCountry) : Country
+    createTournament(tournament: NewTournament) : Tournament
+    createTeam(team: NewTeam) : Team
+    createMatch(match: NewMatch) : Match
+    createPlayer(player: NewPlayer) : Player
+    createDt(dt: NewDt) : Dt
+    createReferee(referee: NewReferee) : Referee
+    createEvent(event: NewEvent) : Event
   }
 `;
 

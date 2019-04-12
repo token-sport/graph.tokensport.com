@@ -13,4 +13,14 @@ module.exports = gql`
     itemsEdited: [Items]
     tokens: Int
   }
+
+  input NewStaff {
+    name: String!
+    email: String!
+    password: String!
+    role: Role!
+    country: String!
+    photo: String
+    tokens: Int
+  }
 `;

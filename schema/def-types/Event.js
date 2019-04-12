@@ -8,4 +8,11 @@ module.exports = gql`
     match: Match!
     description: String!
   }
+
+  input NewEvent {
+    type: EventType!
+    time: String!
+    match: ID!
+    description: String!
+  }
 `;

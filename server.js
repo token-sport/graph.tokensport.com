@@ -1,11 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const { ApolloServer } = require('apollo-server-express');
-const debug = require('debug')('graph.tokensport.com');
-const chalk = require('chalk');
+const debug = require('debug')('graph.tokensport.com:server');
 
 /* SCHEMA */
 const schema = require('./schema');
+
+// CONTROLLERS
+const controllers = require('./controllers');
 
 /* ENV VARIABLES */
 const PORT = process.env.PORT || 5000;
@@ -15,6 +17,9 @@ const app = express();
 
 const server = new ApolloServer({
   schema,
+  context: () => ({
+    controllers: controllers
+  }),
   formatError: error => {
     const { code, errorName } = error.extensions.exception;
     debug(`[${code}] - ${errorName} : ${error.message}`);

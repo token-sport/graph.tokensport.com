@@ -6,8 +6,16 @@ module.exports = gql`
     name: String!
     country: String!
     photo: String
-    role: Role
+    position: Position!
     reactions: [Reaction]
     editedBy: Staff
+  }
+
+  input NewReferee {
+    name: String!
+    country: String!
+    photo: String
+    position: NewPosition!
+    editedBy: ID
   }
 `;

@@ -11,4 +11,13 @@ module.exports = gql`
     reactions: [Reaction]
     editedBy: Staff
   }
+
+  input NewDt {
+    name: String!
+    photo: String
+    country: String!
+    team: ID
+    role: String!
+    editedBy: ID
+  }
 `;

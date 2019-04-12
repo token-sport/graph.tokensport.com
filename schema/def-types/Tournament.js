@@ -9,6 +9,16 @@ module.exports = gql`
     state: String!
     teams: [Team!]!
     matchs: [Match!]!
-    editedBy: [Staff]!
+    editedBy: Staff!
+  }
+
+  input NewTournament {
+    name: String!
+    photo: String!
+    season: String!
+    state: String!
+    teams: [ID]
+    matchs: [ID]
+    editedBy: ID
   }
 `;

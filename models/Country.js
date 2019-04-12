@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const countrySchema = new Schema({
   _id: Schema.Types.ObjectId,
-  name: { type: Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
   photo: { type: String, required: true },
   tournaments: [{ type: Schema.Types.ObjectId, ref: 'Tournament' }],
   editedBy: { type: Schema.Types.ObjectId, ref: 'Staff' }
