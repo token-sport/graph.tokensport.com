@@ -5,7 +5,8 @@ const debug = require('debug')('graph.tokensport.com');
 Put Querys and Mutations handlers here */
 const resolvers = {
   Query: {
-    matchs: () => match
+    getAllMatches: (_, args, context) => context.controllers.match.getAllMatches(),
+    getMatches: (_, args, context) => context.controllers.match.getMatches(args.query)
   },
   Mutation: {
     createUser: (_, args, context) => context.controllers.user.createUser(args.user),

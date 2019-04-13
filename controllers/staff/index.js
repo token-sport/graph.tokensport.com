@@ -29,7 +29,7 @@ const createStaff = async staffData => {
     password: passHash
   }
 
-  const newStaff = setDataToModel(Staff, newStaffData);
+  const newStaff = new Staff({...newStaffData});
 
   try {
     const storedStaff = await newStaff.save();

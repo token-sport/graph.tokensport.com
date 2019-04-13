@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const staffSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   name: { type: String, required: true },
   email: { type: String, require: true },
   password: { type: String, require: true },

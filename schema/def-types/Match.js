@@ -31,4 +31,14 @@ module.exports = gql`
     awayTeam: ID!
     createdBy: ID
   }
+
+  input MatchQuery {
+    _id: ID
+    date: String
+    state: String
+    stadium: String
+    tournament: ID
+    localTeam: ID
+    awayTeam: ID
+  }
 `;

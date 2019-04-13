@@ -11,7 +11,8 @@ const rootTypes = require('./def-types');
 
 const rootQuery = gql`
   type Query {
-    matchs: String,
+    getAllMatches: [Match]
+    getMatches(query: MatchQuery) : [Match]
   }
 
   type Mutation {

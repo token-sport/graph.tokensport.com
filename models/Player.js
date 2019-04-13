@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({
-  _id: Schema.Types.ObjectId,
   name: { type: String, required: true },
   country: { type: String, required: true },
   photo: String,
