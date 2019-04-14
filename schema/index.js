@@ -12,21 +12,7 @@ const rootTypes = require('./def-types');
 const rootQuery = gql`
   type Query {
     getAllMatches: [Match]
-    getMatches(query: MatchQuery) : [Match]
-  }
-
-  type Mutation {
-    createUser(user: NewUser) : User
-    createReaction(reaction: NewReaction) : Reaction
-    createStaff(staff: NewStaff) : Staff
-    createCountry(country: NewCountry) : Country
-    createTournament(tournament: NewTournament) : Tournament
-    createTeam(team: NewTeam) : Team
-    createMatch(match: NewMatch) : Match
-    createPlayer(player: NewPlayer) : Player
-    createDt(dt: NewDt) : Dt
-    createReferee(referee: NewReferee) : Referee
-    createEvent(event: NewEvent) : Event
+    # getMatches(query: MatchQuery) : [Match]
   }
 `;
 

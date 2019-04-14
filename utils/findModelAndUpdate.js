@@ -1,4 +1,0 @@
-
-const findAndUpdateReference = (model, objChange) => {
-  
-}
