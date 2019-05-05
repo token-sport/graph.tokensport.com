@@ -22,4 +22,15 @@ module.exports = `
     INJURYTIME
     OFFSIDE
   }
+
+  enum State {
+    INACTIVE
+    IN PROGRESS
+    PLAYED
+  }
+
+  enum Side {
+    LOCAL
+    AWAY
+  }
 `;

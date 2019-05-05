@@ -16,6 +16,5 @@ You can see these in links below.
 
 **DB Schema**
 
-  - https://miro.com/welcomeonboard/cpLpfZzAZsOmJ6GC1fh8J0HwK0gEulJXRBkusSgrdmn8ir0MQ2e5SEz2q0va36c1
-
+  - https://www.lucidchart.com/invitations/accept/cc24334d-1037-49df-b5f0-c2f3697dd7d0
 

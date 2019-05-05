@@ -6,7 +6,7 @@ module.exports = gql`
     name: String!
     photo: String!
     season: String!
-    state: String!
+    state: State!
     teams: [Team!]!
     matchs: [Match!]!
     editedBy: Staff!

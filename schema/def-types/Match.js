@@ -6,11 +6,10 @@ module.exports = gql`
     date: String!
     tournament: Tournament!
     stadium: String!
-    state: String!
+    state: State!
     assistants: Int
     bettingBoat: Int
     timeline: [Event]
-    totalReactions: Int
     reactions: [Reaction]
     localTeamScore: Int
     awayTeamScore: Int

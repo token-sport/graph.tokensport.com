@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 module.exports = gql`
   type User {
-    _id: ID!
+    userUuid: ID!
     name: String!
     email: String!
     password: String!
@@ -12,8 +12,8 @@ module.exports = gql`
     favTeam: Team
     favTournament: Tournament
     reactions: [Reaction]
-    matchs: [Match]
-    followedMatchs: [Match]
+    matches: [Match]
+    followedMatches: [Match]
     tokens: Int
   }
 
@@ -21,7 +21,7 @@ module.exports = gql`
     name: String!,
     email: String!,
     password: String!,
-    role: String!,
+    role: Role!,
     country: String!
     tokens: Int
   }
