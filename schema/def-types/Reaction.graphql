@@ -1,0 +1,22 @@
+type Reaction {
+  reactionUuid: ID
+  type: ReactionType!
+  user: User
+  match: Match
+  participant: Participant
+}
+
+input NewReaction {
+  type: ReactionType!
+  userUuid: ID!
+  matchUuid: ID!
+  participantUuid: ID!
+}
+
+# type Query {
+
+# }
+
+type Mutation {
+  createReaction(reaction: NewReaction!) : Reaction
+}

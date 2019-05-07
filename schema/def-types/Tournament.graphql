@@ -1,0 +1,29 @@
+type Tournament {
+  tournamentUuid: ID
+  name: String!
+  photo: String!
+  season: String!
+  state: State!
+  country: String!
+  teams: [Team]
+  matches: [Match]
+}
+
+input NewTournament {
+  name: String!
+  photo: String!
+  season: String!
+  state: State!
+  country: String!
+  teams: [ID]
+  matches: [ID]
+}
+
+type Query {
+  getAllTournaments: [Tournament]
+  getTournament(uuid: String): Tournament
+}
+
+type Mutation {
+  createTournament(tournament: NewTournament!) : Tournament
+}

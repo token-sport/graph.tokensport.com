@@ -1,0 +1,32 @@
+type Match {
+  matchUuid: ID
+  date: String
+  tournament: Tournament
+  state: State
+  assistants: Int
+  bettingBoat: Int
+  timeline: [Event]
+  reactions: [Reaction]
+}
+
+input NewMatch {
+  date: String!
+  tournamentUuid: ID!
+  state: State!
+  localTeam: ID
+  awayTeam: ID
+}
+
+input MatchQuery {
+  matchUuid: ID
+  state: State
+  tournamentUuid: ID
+}
+
+type Query {
+  findMatches(query: MatchQuery) : [Match]
+}
+
+type Mutation {
+  createMatch(match: NewMatch) : Match
+}

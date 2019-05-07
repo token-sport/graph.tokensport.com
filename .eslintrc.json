@@ -1,0 +1,32 @@
+{
+  "env": {
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "quotes": ["error", "single"],
+    "eqeqeq": 2,
+    "indent": [
+      "error",
+      2
+    ],
+    "global-require": 2,
+    "camelcase": 2,
+    "no-trailing-spaces": 2,
+    "object-curly-newline": 2,
+    "space-before-function-paren": 2,
+    "space-in-parens": 2,
+    "spaced-comment": 1,
+    "arrow-spacing": 2,
+    "no-const-assign": 2,
+    "no-var": 2
+  }
+}

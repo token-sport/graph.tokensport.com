@@ -1,0 +1,34 @@
+type User {
+  userUuid: ID!
+  firstName: String!
+  surname: String!
+  email: String!
+  password: String!
+  role: Role!
+  country: String!
+  photo: String
+  favTeam: Team
+  favTournament: Tournament
+  reactions: [Reaction]
+  matches: [Match]
+  followedMatches: [Match]
+  tokens: Int
+}
+
+input NewUser {
+  firstName: String!
+  surname: String!
+  email: String!
+  password: String!
+  role: Role!
+  country: String!
+  tokens: Int
+}
+
+type Query {
+  getAllUsers: [User]
+}
+
+type Mutation {
+  createUser(user: NewUser!) : User
+}
