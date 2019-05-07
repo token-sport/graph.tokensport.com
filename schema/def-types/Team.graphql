@@ -1,0 +1,27 @@
+type Team {
+  teamUuid: ID!
+  name: String!
+  photo: String!
+  lineup: String!
+  country: String!
+  participants: [Participant]
+  tournaments: [Tournament]
+  matches: [Match]
+}
+
+input NewTeam {
+  name: String!
+  photo: String!
+  lineup: String
+  country: String!
+  participants: [ID]
+  tournaments: [ID]
+}
+
+type Query {
+  getAllTeams: [Team]
+}
+
+type Mutation {
+  createTeam(team: NewTeam!) : Team
+}

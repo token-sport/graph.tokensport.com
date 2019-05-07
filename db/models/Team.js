@@ -4,13 +4,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      unique: true
     },
-    name: { type: DataTypes.STRING, unique: true },
+    name: { type: DataTypes.STRING, unique: true, allowNull: false },
     photo: {
       type: DataTypes.STRING,
       allowNull: false,
-      validation: {
+      validate: {
         isUrl: true
       }
     },

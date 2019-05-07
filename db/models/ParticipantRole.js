@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       allowNull: false
     },
-    role: { type: DataTypes.STRING, allowNull: false },
-    position: { type: DataTypes.STRING, defaultValue: 'Not Define Yet!' }
+    role: { type: DataTypes.ENUM('COACH', 'PLAYER', 'REFEREE'), allowNull: false },
+    position: { type: DataTypes.STRING, defaultValue: 'Not Define Yet!', unique: true }
   });
 
   return ParticipantRole;

@@ -1,0 +1,17 @@
+type Stadium {
+  stadiumUuid: ID
+  name: String
+}
+
+input NewStadium {
+  name: String!
+  country: String!
+}
+
+type Query {
+  getStadium(uuid: String) : Stadium
+}
+
+type Mutation {
+  createStadium(stadium: NewStadium!) : Stadium
+}

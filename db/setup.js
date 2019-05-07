@@ -11,7 +11,7 @@ const { sequelize } = require('./models');
  */
 const initializeDatabase = async () => {
 
-  /* TESTING CONNECTION */
+  /* CONNECTION TEST */
   try {
     await sequelize.authenticate();
     debug('Database connected...');
@@ -21,7 +21,7 @@ const initializeDatabase = async () => {
   }
 
   /* SYNC MODELS WITH DATABASE */
-  sequelize.sync({ force: true });
+  sequelize.sync({ force: false });
 }
 
 module.exports = initializeDatabase;

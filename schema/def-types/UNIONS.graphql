@@ -1,0 +1,1 @@
+union Items = Participant | Match | Team | Tournament

@@ -1,14 +1,26 @@
+const debug = require('debug')('graph.tokensport.com:lib.user');
+
 /* MODELS */
 const models = require('../models');
 
 const createUser = async userData => {
-  const userCreated = await models.User.create(userData);
-  return userCreated.toJSON();
+  try {
+    const userCreated = await models.User.create(userData);
+    return userCreated;
+  } catch (error) {
+    debug(error);
+    throw error;
+  }
 };
 
 const getAllUsers = async () => {
-  const users = await models.User.findAll();
-  return users;
+  try {
+    const users = await models.User.findAll();
+    return users;
+  } catch (error) {
+    debug(error);
+    throw error;
+  }
 };
 
 module.exports = {

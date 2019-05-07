@@ -1,0 +1,52 @@
+type Participant {
+  participantUuid: ID!
+  firstName: String!
+  surname: String!
+  photo: String
+  country: String!
+  team: Team
+  role: Role
+}
+
+input NewParticipant {
+  firstName: String!
+  surname: String!
+  photo: String!
+  country: String!
+  teamUuid: ID
+  roleUuid: ID!
+}
+
+input ParticipantQuery {
+  participantUuid: ID
+  firstName: String
+  surname: String
+  country: String
+}
+
+type ParticipantRole {
+  roleUuid: ID!
+  role: RoleParticipant!
+  position: String!
+}
+
+input NewRole {
+  role: RoleParticipant!
+  position: String!
+}
+
+input RoleQuery {
+  role: RoleParticipant
+  position: String
+}
+
+type Query {
+  getParticipants(query: ParticipantQuery) : [Participant]
+  findParticipant(uuid: ID!) : Participant
+  getParticipantRoles(query: RoleQuery) : [ParticipantRole]
+}
+
+type Mutation {
+  createParticipant(participant: NewParticipant!) : Participant
+  createParticipantRole(participantRole: NewRole!) : ParticipantRole
+}

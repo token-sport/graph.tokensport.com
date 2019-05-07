@@ -1,32 +1,6 @@
-/* TYPES */
-const User = require('./User');
-const Staff = require('./Staff');
-const Player = require('./Player');
-const Referee = require('./Referee');
-const Dt = require('./Dt');
-const Match = require('./Match');
-const Event = require('./Event');
-const Reaction = require('./Reaction');
-const Country = require('./Country');
-const Tournament = require('./Tournament');
-const Team = require('./Team');
-const GLOBALS = require('./GLOBALS');
-const UNIONS = require('./UNIONS');
-const ENUMS = require('./ENUMS');
+const path = require('path');
+const { fileLoader, mergeTypes } = require('merge-graphql-schemas');
 
-module.exports = [
-  User,
-  Staff,
-  Player,
-  Referee,
-  Dt,
-  Match,
-  Event,
-  Reaction,
-  Country,
-  Tournament,
-  Team,
-  GLOBALS,
-  UNIONS,
-  ENUMS
-];
+const typesArrays = fileLoader(path.join(__dirname, './'));
+
+module.exports = mergeTypes(typesArrays, { all: true });

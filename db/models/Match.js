@@ -3,26 +3,15 @@ module.exports = (sequelize, DataTypes) => {
     matchUuid : {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      unique: true,
       primaryKey: true
     },
     date: { type: DataTypes.DATE, allowNull: false },
     state: {
-      type: DataTypes.ENUM('INACTIVE', 'IN PROGRESS', 'PLAYED'),
+      type: DataTypes.ENUM('INACTIVE', 'INPROGRESS', 'PLAYED'),
       allowNull: false
     },
     assistants: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 0
-    },
-    localTeamScore: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 0
-    },
-    awayTeamScore: {
-      type: DataTypes.INTEGER, allowNull: true,
       allowNull: true,
       defaultValue: 0
     }

@@ -4,13 +4,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      unique: true
     },
-    name: { type: DataTypes.STRING, allowNull: false },
+    name: { type: DataTypes.STRING, allowNull: false, unique: true },
     photo: {
       type: DataTypes.STRING,
       allowNull: true,
-      validation: {
+      validate: {
         isUrl: true
       }
     },
@@ -21,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 'Not defined Yet!'
     },
     state: {
-      type: DataTypes.ENUM('INACTIVE', 'IN PROGRESS', 'PLAYED'),
+      type: DataTypes.ENUM('INACTIVE', 'INPROGRESS', 'PLAYED'),
       defaultValue: 'INACTIVE',
       allowNull: false
     }
