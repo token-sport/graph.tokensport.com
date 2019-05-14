@@ -27,6 +27,7 @@ enum EventType {
   OFFSIDE
 }
 
+""" This can be part of a Tournament or a Match """
 enum State {
   INACTIVE
   INPROGRESS

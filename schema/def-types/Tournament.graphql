@@ -9,21 +9,31 @@ type Tournament {
   matches: [Match]
 }
 
+""" Input to create new tournament """
 input NewTournament {
   name: String!
   photo: String!
   season: String!
   state: State!
   country: String!
-  teams: [ID]
-  matches: [ID]
+}
+
+input QueryTournament {
+  tournamentUuid: ID
+  name: String
+  season: String
+  state: State
+  country: String
 }
 
 type Query {
-  getAllTournaments: [Tournament]
-  getTournament(uuid: String): Tournament
+  """ Get all tournaments that match with the query passed (Is possible to pass a empty query and get the entire tournaments table) """
+  getTournaments(query: QueryTournament): [Tournament]
+  """ Find a tournament by uuid """
+  findTournament(uuid: String): Tournament
 }
 
 type Mutation {
+  """ Create a new tournament """
   createTournament(tournament: NewTournament!) : Tournament
 }

@@ -23,11 +23,14 @@ const createParticipant = async participantData => {
  *
  * @async
  * @param {Object} query
- * @returns {Object}
+ * @returns {Object} - Include all direct associations in the result object
  */
 const getParticipants = async query => {
   try {
-    const participants = await models.Participant.findAll({ where: query });
+    const participants = await models.Participant.findAll({
+      where: query,
+      include: [{ all: true, nested: true }]
+    });
     return participants;
   } catch (error) {
     debug(error);
@@ -39,11 +42,14 @@ const getParticipants = async query => {
  *
  * @async
  * @param {Object} participantUuid
- * @returns {Objecy}
+ * @returns {Object} - Include all direct associations in the result object
  */
 const findParticipant = async participantUuid => {
   try {
-    const participant = await models.Participant.findByPk(participantUuid);
+    const participant = await models.Participant.findOne({
+      where: { participantUuid },
+      include: [{ all: true, nested: true }]
+    });
     return participant;
   } catch (error) {
     debug(error);
@@ -75,7 +81,7 @@ const createParticipantRole = async roleData => {
  */
 const getParticipantRoles = async query => {
   try {
-    const roles = await models.ParticipantRole.findAll({ where: query});
+    const roles = await models.ParticipantRole.findAll({ where: query });
     return roles;
   } catch (error) {
     debug(error);

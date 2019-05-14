@@ -2,31 +2,43 @@ type Match {
   matchUuid: ID
   date: String
   tournament: Tournament
+  """ Enums that contains a group of states """
   state: State
   assistants: Int
-  bettingBoat: Int
-  timeline: [Event]
+  localScore: Int
+  awayScore: Int
+  localTeamFk: Team
+  awayTeamFk: Team
   reactions: [Reaction]
+  users: [User]
 }
 
+""" input to create a new Match """
 input NewMatch {
   date: String!
   tournamentUuid: ID!
+  """ Enums that contains a group of states """
   state: State!
-  localTeam: ID
-  awayTeam: ID
+  localTeam: ID!
+  awayTeam: ID!
 }
 
 input MatchQuery {
   matchUuid: ID
+  """ Enums that contains a group of states """
   state: State
+  date: String
   tournamentUuid: ID
 }
 
 type Query {
-  findMatches(query: MatchQuery) : [Match]
+  """ Get all matches that match with the query passed (Is possible to pass a empty query and get the entire matches table) """
+  getMatches(query: MatchQuery) : [Match]
+  """ Find a match by uuid """
+  findMatch(uuid: ID) : Match
 }
 
 type Mutation {
+  """ Create a new Match """
   createMatch(match: NewMatch) : Match
 }

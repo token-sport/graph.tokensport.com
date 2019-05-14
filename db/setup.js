@@ -7,6 +7,7 @@ const { sequelize } = require('./models');
  * This Function perform the database connection and
  * creates relations between the models.
  *
+ * @async
  * @author Steven Anaya <stvanayar@gmail.com>
  */
 const initializeDatabase = async () => {
@@ -21,7 +22,7 @@ const initializeDatabase = async () => {
   }
 
   /* SYNC MODELS WITH DATABASE */
-  sequelize.sync({ force: false });
+  sequelize.sync({ force: false, match: /_develop$/ });
 }
 
 module.exports = initializeDatabase;

@@ -1,8 +1,9 @@
 module.exports = {
   Query: {
-    findMatches: (_, args, context) => context.controllers.match.getMatches(args.query)
+    getMatches: (_, { query }, { controllers }) => controllers.match.getMatches(query),
+    findMatch: (_, { uuid }, { controllers }) => controllers.match.findMatch(uuid)
   },
   Mutation: {
-    createMatch: (_, args, context) => context.controllers.match.createMatch(args.match)
+    createMatch: (_, { match }, { controllers }) => controllers.match.createMatch(match)
   }
 };
