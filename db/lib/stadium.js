@@ -19,6 +19,15 @@ const createStadium = async stadiumData => {
   }
 };
 
+const getStadia = async query => {
+  try {
+    const stadia = await models.Stadium.findAll({ where: query });
+    return stadia;
+  } catch (error) {
+    debug(error);
+    throw error;
+  }
+};
 
 /**
  *
@@ -38,5 +47,6 @@ const findStadium = async stadiumUuid => {
 
 module.exports = {
   createStadium,
+  getStadia,
   findStadium
 };

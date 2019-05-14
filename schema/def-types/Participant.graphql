@@ -5,9 +5,10 @@ type Participant {
   photo: String
   country: String!
   team: Team
-  role: Role
+  participantRole: ParticipantRole
 }
 
+""" Input type to create a new Participant """
 input NewParticipant {
   firstName: String!
   surname: String!
@@ -26,27 +27,36 @@ input ParticipantQuery {
 
 type ParticipantRole {
   roleUuid: ID!
+  """ Enum that contains all the Participant Roles """
   role: RoleParticipant!
   position: String!
 }
 
+""" Input type to create a new Participant Role """
 input NewRole {
+  """ Enum that contains all the Participant Roles """
   role: RoleParticipant!
   position: String!
 }
 
 input RoleQuery {
+  """ Enum that contains all the Participant Roles """
   role: RoleParticipant
   position: String
 }
 
 type Query {
+  """ Get all participants that matches with the query passed (You can pass an empty object and It will retrieve all records) """
   getParticipants(query: ParticipantQuery) : [Participant]
+  """ Find one participant that match with the uuid passed """
   findParticipant(uuid: ID!) : Participant
+  """ Get all roles that matches with the query passed (You can pass an empty object and It will retrieve all records) """
   getParticipantRoles(query: RoleQuery) : [ParticipantRole]
 }
 
 type Mutation {
+  """ Create a new participant. It could be a player, coach or referee. """
   createParticipant(participant: NewParticipant!) : Participant
+  """ Create a new participant Role. """
   createParticipantRole(participantRole: NewRole!) : ParticipantRole
 }

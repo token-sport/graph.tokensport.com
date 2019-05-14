@@ -11,36 +11,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isUrl: true
+        isUrl: {
+          msg: 'Photo field must be an valid url format.'
+        }
       }
     },
-    country: { type: DataTypes.STRING, allowNull: false },
-    teamUuid: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      foreignKey: {
-        model: 'team',
-        key: 'teamUuid'
-      }
-    },
-    roleUuid: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      foreignKey: {
-        model: 'participants_role',
-        key: 'roleUuid'
-      }
-    }
+    country: { type: DataTypes.STRING, allowNull: false }
   });
 
   Participant.associate = models => {
-    /* N:M Reaction Association */
-    Participant.belongsToMany(models.User, {
-      through: 'reaction',
-      foreignKey: {
-        name: 'participantUuid',
-        field: 'participant_uuid'
-      }
+    /* 1:N Reaction Association */
+    Participant.hasMany(models.Reaction, {
+      foreignKey: 'participantUuid'
     });
 
     /* 1:N ParticipantRole Association */

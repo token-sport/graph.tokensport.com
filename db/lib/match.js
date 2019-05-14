@@ -11,8 +11,9 @@ const models = require('../models');
  */
 const createMatch = async matchData => {
   try {
-    const matchStored = await models.Match.create(matchData);
-    return matchStored;
+    const match = await models.Match.create(matchData);
+
+    return match;
   } catch (error) {
     debug(error);
     throw error;
@@ -27,8 +28,39 @@ const createMatch = async matchData => {
  */
 const getMatches = async query => {
   try {
-    const matches = await models.Match.findAll({ where: query });
+    const matches = await models.Match.findAll({
+      where: query,
+      include: [{
+        model: models.Tournament
+      }, {
+        model: models.Team,
+        as: 'localTeamFk'
+      }, {
+        model: models.Team,
+        as: 'awayTeamFk'
+      }]
+    });
+
     return matches;
+  } catch (error) {
+    debug(error);
+    throw error;
+  }
+};
+
+/**
+ *
+ * @async
+ * @param {UUID} matchUuid
+ * @returns {Object}
+ */
+const findMatch = async matchUuid => {
+  try {
+    const matchFound = await models.Match.findOne({
+      where: { matchUuid },
+      include: [{ all: true, nested: true }]
+    });
+    return matchFound;
   } catch (error) {
     debug(error);
     throw error;
@@ -37,5 +69,6 @@ const getMatches = async query => {
 
 module.exports = {
   createMatch,
-  getMatches
+  getMatches,
+  findMatch
 };

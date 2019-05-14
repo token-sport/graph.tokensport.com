@@ -1,11 +1,11 @@
 module.exports = {
   Query: {
-    getParticipants: (_, args, context) => context.controllers.participant.getParticipants(args.query),
-    findParticipant: (_, args, context) => context.controllers.participant.findParticipant(args.uuid),
-    getParticipantRoles: (_, args, context) => context.controllers.participant.getParticipantRoles(args.query)
+    getParticipants: (_, { query }, { controllers }) => controllers.participant.getParticipants(query),
+    findParticipant: (_, { uuid }, { controllers }) => controllers.participant.findParticipant(uuid),
+    getParticipantRoles: (_, { query }, { controllers }) => controllers.participant.getParticipantRoles(query)
   },
   Mutation: {
-    createParticipant: (_, args, context) => context.controllers.participant.createParticipant(args.participant),
-    createParticipantRole: (_, args, context) => context.controllers.participant.createParticipantRole(args.participantRole)
+    createParticipant: (_, { participant }, { controllers }) => controllers.participant.createParticipant(participant),
+    createParticipantRole: (_, { participantRole }, { controllers }) => controllers.participant.createParticipantRole(participantRole)
   }
 };

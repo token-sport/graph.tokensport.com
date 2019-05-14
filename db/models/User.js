@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
     userUuid: {
@@ -12,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       unique: true,
       validate: {
-        isEmail: true
+        isEmail: {
+          msg: 'Email field must be an valid email format.'
+        }
       }
     },
     password: { type: DataTypes.STRING, allowNull: false },
@@ -20,7 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isUrl: true
+        isUrl: {
+          msg: 'Photo field must be an valid url format.'
+        }
       }
     },
     role: {
@@ -29,8 +35,29 @@ module.exports = (sequelize, DataTypes) => {
     },
     country: { type: DataTypes.STRING, allowNull: false },
     tokens: { type: DataTypes.INTEGER, allowNull: true, defaultValue: 0 }
+  }, {
+    indexes: [{
+      unique: true,
+      fields: ['email']
+    }]
+  }
+  );
+
+  /* MODEL HOOKS */
+
+  /*
+   Add a hook for creating
+   the hash password before it save Data.
+  */
+  User.beforeCreate((user) => {
+    return bcrypt.hash(user.password, 10)
+      .then(pswHash => {
+        user.password = pswHash;
+      });
   });
 
+
+  /* MODEL ASSOCIATIONS */
   User.associate = models => {
     /* N:M Match Association */
     User.belongsToMany(models.Match, {
@@ -42,8 +69,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     /* N:M Reaction Association */
-    User.belongsToMany(models.Participant, {
-      through: 'reaction',
+    User.belongsToMany(models.Reaction, {
+      through: 'reactions_users',
       foreignKey: {
         name: 'userUuid',
         field: 'user_uuid'

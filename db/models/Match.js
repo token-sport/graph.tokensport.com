@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0
+    },
+    localScore: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    awayScore: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
     }
   });
 
@@ -27,15 +35,26 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    /* N:M Team Association */
-    Match.belongsToMany(models.Team, {
-      through: 'teams_matches',
+    /* 1:N Reaction Association */
+    Match.hasMany(models.Reaction, {
       foreignKey: 'matchUuid'
     });
 
     /* 1:N Tournament Association */
     Match.belongsTo(models.Tournament, {
       foreignKey: 'tournamentUuid'
+    });
+
+    /* 1:1 Team Association */
+    Match.belongsTo(models.Team, {
+      as: 'localTeamFk',
+      foreignKey: 'localTeam'
+    });
+
+    /* 1:1 Team Association */
+    Match.belongsTo(models.Team, {
+      as: 'awayTeamFk',
+      foreignKey: 'awayTeam'
     });
   };
 

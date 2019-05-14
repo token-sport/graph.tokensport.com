@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isUrl: true
+        isUrl: {
+          msg: 'Photo field must be an valid url format.'
+        }
       }
     },
     country: { type: DataTypes.STRING, allowNull: false },
@@ -27,15 +29,26 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
 
-    /* N:M Match Association */
-    Team.belongsToMany(models.Match, {
-      through: 'teams_matches',
+    /* 1:N Participant Association */
+    Team.hasMany(models.Participant, {
       foreignKey: 'teamUuid'
-    });
+    })
 
     /* 1:N Stadium Association */
     Team.belongsTo(models.Stadium, {
       foreignKey: 'stadiumUuid'
+    });
+
+    /* 1:1 Match Association */
+    Team.hasMany(models.Match, {
+      as: 'localTeamFk',
+      foreignKey: 'localTeam'
+    });
+
+    /* 1:1 Match Association */
+    Team.hasMany(models.Match, {
+      as: 'awayTeamFk',
+      foreignKey: 'awayTeam'
     });
   }
 

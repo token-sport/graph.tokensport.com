@@ -1,8 +1,9 @@
 module.exports = {
   Query: {
-    getStadium: (_, args, context) => context.controllers.stadium.findStadium(args.uuid)
+    getStadia: (_, { query }, { controllers }) => controllers.stadium.getStadia(query),
+    findStadium: (_, { uuid }, { controllers }) => controllers.stadium.findStadium(uuid)
   },
   Mutation: {
-    createStadium: (_, args, context) => context.controllers.stadium.createStadium(args.stadium)
+    createStadium: (_, { stadium }, { controllers }) => controllers.stadium.createStadium(stadium)
   }
 };

@@ -1,9 +1,11 @@
 module.exports = {
   Query: {
-    getAllUsers: (_, args, context) => context.controllers.user.getAllUsers()
-
+    getUsers: (_, { query }, { controllers }) => controllers.user.getUsers(query),
+    findUser: (_, { email }, { controllers }) => controllers.user.findUser(email),
+    getMatchesSubscribed: (_, args, { controllers }) => controllers.user.getMatchesSubscribed(args)
   },
   Mutation: {
-    createUser: (_, args, context) => context.controllers.user.createUser(args.user)
+    register: (_, { user }, { controllers }) => controllers.user.createUser(user),
+    subscribeToMatch: (_, { userUuid, matchUuid }, { controllers }) => controllers.user.subscribeToMatch(userUuid, matchUuid)
   }
 };

@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isUrl: true
+        isUrl: {
+          msg: 'Photo field must be an valid url format.'
+        }
       }
     },
     country: { type: DataTypes.STRING, allowNull: false },
@@ -35,6 +37,11 @@ module.exports = (sequelize, DataTypes) => {
         field: 'tournament_uuid'
       }
     });
+
+    /* 1:N Match Association */
+    Tournament.hasMany(models.Match, {
+      foreignKey: 'tournamentUuid'
+    })
   };
 
   return Tournament;

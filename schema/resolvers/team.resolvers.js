@@ -1,8 +1,9 @@
 module.exports = {
   Query: {
-    getAllTeams: (_, args, context) => context.controllers.team.getAllTeams()
+    getTeams: (_, { query }, { controllers }) => controllers.team.getTeams(query),
+    findTeam: (_, { uuid }, { controllers }) => controllers.team.findTeam(uuid)
   },
   Mutation: {
-    createTeam: (_, args, context) => context.controllers.team.createTeam(args.team)
+    createTeam: (_, { team }, { controllers }) => controllers.team.createTeam(team)
   }
 };

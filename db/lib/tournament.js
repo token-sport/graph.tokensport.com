@@ -22,11 +22,15 @@ const createTournament = async tournamentData => {
 /**
  *
  * @async
+ * @param {Object} query
  * @returns {Object}
  */
-const getAllTournaments = async () => {
+const getTournaments = async query => {
   try {
-    const tournaments = await models.Tournament.findAll();
+    const tournaments = await models.Tournament.findAll({
+      where: query,
+      include: [{ all: true, nested: true }]
+    });
     return tournaments;
   } catch (error) {
     debug(error);
@@ -43,7 +47,10 @@ const getAllTournaments = async () => {
  */
 const findTournament = async tournamentUuid => {
   try {
-    const tournamentFound = await models.Tournament.findByPk(tournamentUuid);
+    const tournamentFound = await models.Tournament.findOne({
+      where: { tournamentUuid },
+      include: [{ all: true, nested: true }]
+    });
     return tournamentFound;
   } catch (error) {
     debug(error);
@@ -53,6 +60,6 @@ const findTournament = async tournamentUuid => {
 
 module.exports = {
   createTournament,
-  getAllTournaments,
+  getTournaments,
   findTournament
 };

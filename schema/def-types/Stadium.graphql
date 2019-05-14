@@ -1,17 +1,29 @@
 type Stadium {
-  stadiumUuid: ID
+  stadiumUuid: ID!
   name: String
+  country: String
 }
 
+""" Input tyoe to create a new Stadium """
 input NewStadium {
   name: String!
   country: String!
 }
 
+input QueryStadium {
+  stadiumUuid: ID
+  name: String
+  country: String
+}
+
 type Query {
-  getStadium(uuid: String) : Stadium
+  """ Get all Stadia that match with the query passed (Is possible to pass a empty query and get the entire stadia table) """
+  getStadia(query: QueryStadium) : [Stadium]
+  """ Find a stadium by uuid """
+  findStadium(uuid: String) : Stadium
 }
 
 type Mutation {
+  """ Create a new stadium """
   createStadium(stadium: NewStadium!) : Stadium
 }

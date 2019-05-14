@@ -11,11 +11,11 @@ const models = {
   ParticipantRole: sequelize.import('./ParticipantRole'),
   Tournament: sequelize.import('./Tournament'),
   Team: sequelize.import('./Team'),
-  TeamsMatches: sequelize.import('./TeamsMatches'),
   Stadium: sequelize.import('./Stadium'),
   Reaction: sequelize.import('./Reaction')
 };
 
+// Associate all matches imported with sequelize
 Object.keys(models).forEach(modelName => {
   if ('associate' in models[modelName]) {
     models[modelName].associate(models);

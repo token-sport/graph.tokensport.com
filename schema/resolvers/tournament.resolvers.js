@@ -1,9 +1,9 @@
 module.exports = {
   Query: {
-    getTournament: (_, args, context) => context.controllers.tournament.findTournament(args.uuid),
-    getAllTournaments: (_, args, context) => context.controllers.tournament.getAllTournaments()
+    findTournament: (_, { uuid }, { controllers }) => controllers.tournament.findTournament(uuid),
+    getTournaments: (_, { query }, { controllers }) => controllers.tournament.getTournaments(query)
   },
   Mutation: {
-    createTournament: (_, args, context) => context.controllers.tournament.createTournament(args.tournament)
+    createTournament: (_, { tournament }, { controllers }) => controllers.tournament.createTournament(tournament)
   }
 };

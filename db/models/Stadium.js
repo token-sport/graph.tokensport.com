@@ -9,5 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     country: { type: DataTypes.STRING, allowNull: false }
   });
 
+  Stadium.associate = models => {
+    /* 1:N Team Association */
+    Stadium.hasMany(models.Team, {
+      foreignKey: 'stadiumUuid'
+    });
+  };
+
   return Stadium;
 };
