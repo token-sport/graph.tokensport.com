@@ -1,10 +1,10 @@
 {
   "name": "graph.tokensport.com",
   "version": "1.0.0",
-  "description": "Token Sport GraphQL and Prisma ORM module",
+  "description": "Token Sport GraphQL and Sequelize ORM module",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=graph.tokensport.com:* NODE_ENV=production server.js",
+    "start": "DEBUG=graph.tokensport.com:* NODE_ENV=production node server.js",
     "start-dev": "DEBUG=graph.tokensport.com:* nodemon server.js"
   },
   "repository": {
