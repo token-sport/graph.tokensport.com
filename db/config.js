@@ -1,9 +1,9 @@
 const debug = require('debug')('graph.tokensport.com:db');
 
 module.exports = {
-  database: process.env.DB_NAME || 'tokensport_develop',
+  database: process.env.DB_NAME || 'tokensport',
   username: process.env.DB_USER || 'tspuser',
-  password: process.env.DB_PASS || 'paulina1257',
+  password: process.env.DB_PASS || 'zanahoria19',
   host: process.env.DB_HOST || 'localhost',
   dialect: 'postgres',
   logging: s => debug(s),

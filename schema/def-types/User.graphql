@@ -23,6 +23,8 @@ input NewUser {
   role: Role!
   country: String!
   tokens: Int
+  favTournament: ID
+  favTeam: ID
 }
 
 input QueryUser {
