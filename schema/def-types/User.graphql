@@ -1,0 +1,51 @@
+type User {
+  userUuid: ID!
+  firstName: String!
+  surname: String!
+  email: String!
+  role: Role!
+  country: String!
+  photo: String
+  favTeam: Team
+  favTournament: Tournament
+  reactions: [Reaction]
+  matches: [Match]
+  followedMatches: [Match]
+  tokens: Int
+}
+
+""" Input type to create a new user """
+input NewUser {
+  firstName: String!
+  surname: String!
+  email: String!
+  password: String!
+  role: Role!
+  country: String!
+  tokens: Int
+  favTournament: ID
+  favTeam: ID
+}
+
+input QueryUser {
+  userUuid: ID
+  email: String
+  role: Role
+  country: String
+}
+
+type Query {
+  """ Get all users that match with the query passed (Is possible to pass a empty query and get the entire users table) """
+  getUsers(query: QueryUser ): [User]
+  """ Find a user by email """
+  findUser(email: String) : User
+  """ Get all matches that a user is subscribed to (If the excludePlayed is passed, It will ignore all matches played) """
+  getMatchesSubscribed(userUuid: ID, excludePlayed: Boolean): [Match]
+}
+
+type Mutation {
+  """ Create a regular user or an admin one."""
+  register(user: NewUser!) : User
+  """ Subscribe to a match that will play soon or is playing now """
+  subscribeToMatch(userUuid: ID, matchUuid: ID) : Boolean!
+}

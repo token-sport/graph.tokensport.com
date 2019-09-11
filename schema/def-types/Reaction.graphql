@@ -1,0 +1,44 @@
+"""
+Describes the reaction and its relations.
+"""
+type Reaction {
+  """ Enum that contains the reaction types. """
+  reactionUuid: ID!
+  type: ReactionType!
+  users: [User]
+  match: Match
+  participant: Participant
+}
+
+"""
+Input type that contains the basic fields to create a new Reaction.
+"""
+input NewReaction {
+  """ Enum that contains the reaction types. """
+  type: ReactionType
+  userUuid: ID
+  matchUuid: ID
+  participantUuid: ID
+}
+
+""" Query dataset to fetch reactions """
+input QueryReaction {
+  reactionUuid: ID,
+  """ Enum that contains the reaction types. """
+  type: ReactionType
+  matchUuid: ID
+}
+
+type Query {
+  """ Get all reactions that matches with the query passed (You can pass an empty object and It will retrieve all records) """
+  getReactions(query: QueryReaction) : [Reaction]
+  """ Get user reactions (Pass a QueryReaction if you want to filter the results. If a query is not provide It will retrieve all records )"""
+  getUserReactions(userUuid: ID, query: QueryReaction) : [Reaction]
+  """ Get Participant reactions (Pass a QueryReaction if you want to filter the results. If a query is not provide It will retrieve all records ) """
+  getParticipantReactions(participantUuid: ID, query: QueryReaction) : [Reaction]
+}
+
+type Mutation {
+  """ Create a Reaction. Only a registered user can create a Reaction. """
+  createReaction(reaction: NewReaction!) : Reaction
+}

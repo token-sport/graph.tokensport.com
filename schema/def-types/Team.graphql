@@ -1,0 +1,40 @@
+type Team {
+  teamUuid: ID!
+  name: String!
+  photo: String!
+  lineup: String!
+  country: String!
+  stadium: Stadium
+  participants: [Participant]
+  tournaments: [Tournament]
+  localTeamFk: [Match]
+  awayTeamFk: [Match]
+}
+
+input NewTeam {
+  name: String!
+  photo: String!
+  lineup: String
+  country: String!
+  stadiumUuid: ID
+  tournaments: [ID]
+}
+
+input QueryTeam {
+  teamUuid: ID
+  name: String
+  country: String
+  stadium: String
+}
+
+type Query {
+  """ Get all Teams that match with the query passed (Is possible to pass a empty query and get the entire teams table) """
+  getTeams(query: QueryTeam): [Team]
+  """ Find a team by uuid """
+  findTeam(uuid: ID) : Team
+}
+
+type Mutation {
+  """ Create a new team """
+  createTeam(team: NewTeam!) : Team
+}

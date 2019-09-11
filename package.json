@@ -1,0 +1,38 @@
+{
+  "name": "graph.tokensport.com",
+  "version": "1.0.0",
+  "description": "Token Sport GraphQL and Sequelize ORM module",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=graph.tokensport.com:* NODE_ENV=production node server.js",
+    "start-dev": "DEBUG=graph.tokensport.com:* nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/token-sport/graph.tokensport.com.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Token Sport",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/token-sport/graph.tokensport.com/issues"
+  },
+  "homepage": "https://github.com/token-sport/graph.tokensport.com#readme",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "bcrypt": "^3.0.5",
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
+    "graphql": "^14.2.1",
+    "merge-graphql-schemas": "^1.5.8",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^5.3.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "nodemon": "^1.18.10"
+  }
+}

@@ -1,0 +1,13 @@
+type Country {
+  _id: ID!
+  name: String!
+  photo: String!
+  tournaments: [Tournament]
+}
+
+input NewCountry {
+  name: String!
+  photo: String!
+  tournaments: [ID]
+  editedBy: ID
+}

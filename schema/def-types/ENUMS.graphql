@@ -1,0 +1,40 @@
+enum Role {
+  USER
+  STAFF
+}
+
+enum RoleParticipant {
+  PLAYER
+  COACH
+  REFEREE
+}
+
+enum ReactionType {
+  CLAP
+  BOO
+}
+
+enum EventType {
+  FOUL
+  SUBSTITUTION
+  GOAL
+  YELLOWCARD
+  REDCARD
+  PENALTY
+  OWNGOAL
+  HANDBALL
+  INJURYTIME
+  OFFSIDE
+}
+
+""" This can be part of a Tournament or a Match """
+enum State {
+  INACTIVE
+  INPROGRESS
+  PLAYED
+}
+
+enum Side {
+  LOCAL
+  AWAY
+}
