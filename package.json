@@ -22,7 +22,7 @@
   "homepage": "https://github.com/token-sport/graph.tokensport.com#readme",
   "dependencies": {
     "apollo-server": "^2.4.8",
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "graphql": "^14.2.1",
